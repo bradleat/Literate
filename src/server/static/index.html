@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>inKibra Literate Preview</title>
+  <link rel="stylesheet" href="static/css/code/github.css">
+  <link rel="stylesheet" href="static/css/normalize.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/bootstrap.css">
+</head>
+<body>
+  
+<!--The template that includes the header tablist -->
+  <script type="text/x-handlebars">    
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="index">
+    <ul>
+    {{#each item in model}}
+      <li>{{item}}</li>
+    {{/each}}
+    </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="page">    
+    <ul class="nav nav-tabs" role="tablist">
+      <li id="literate-tab"><a {{action "literate-start"}}>Literate</a></li>
+      <li id="markdown-tab"><a {{action "markdown-start"}}>Markdown</a></li>
+      <li id="code-tab"><a {{action "code-start"}}>Code</a></li>
+      <li class="navbar-right"><a id="save-refresh-icon" class="glyphicon glyphicon-leaf" {{action "save-refresh"}} ></a></li>
+      <li class="navbar-right"><a class="glyphicon glyphicon-cog" {{action "open-settings"}} ></a></li>
+      <li class="navbar-right" id="edit-button"><a id="edit-icon" class="glyphicon glyphicon-pencil" {{action "toggle-editor"}} ></a></li>
+    </ul>
+
+    {{edit-r}}
+
+    <div id="page-render-target"></div>  
+    
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="markdown">
+    <div id="markdown-render-target"></div>
+  </script>
+  <script type="text/x-handlebars" data-template-name="code">
+    <div id="code-render-target"></div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="components/edit-r">
+    <!-- Content, editor gets inserted here -->
+    <div id="editor"></div>
+   
+
+  </script>
+
+  <script src="static/js/libs/jquery-1.10.2.js"></script>
+  <script src="static/js/libs/handlebars-1.1.2.js"></script>
+  <script src="static/js/libs/ember-1.6.0.js"></script>
+  <script src="static/js/libs/highlight.pack.js"></script>
+  <script src="static/js/libs/bootstrap.js"></script>
+  <script src="static/js/libs/ace/ace.js"></script>
+  <script src="static/js/libs/ace/ext-settings_menu.js"></script>
+  <script src="static/js/app.min.js"></script>
+
+
+</body>
+</html>
